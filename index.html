@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>◯×ゲーム</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap">
 </head>
+
 <body>
   <div id="wrapper">
-    <h1 class="title">OX GAME</h1>
+    <p class="text">3つ並べたら勝ち</p>
+    <h1 class="title">OX Game</h1>
     <div id="board">
-      <div cellIndex="0" class="cell"></div>
-      <div cellIndex="1" class="cell"></div>
-      <div cellIndex="2" class="cell"></div>
-      <div cellIndex="3" class="cell"></div>
-      <div cellIndex="4" class="cell"></div>
-      <div cellIndex="5" class="cell"></div>
-      <div cellIndex="6" class="cell"></div>
-      <div cellIndex="7" class="cell"></div>
-      <div cellIndex="8" class="cell"></div>
+      <div id="0" class="box"></div>
+      <div id="1" class="box"></div>
+      <div id="2" class="box"></div>
+      <div id="3" class="box"></div>
+      <div id="4" class="box"></div>
+      <div id="5" class="box"></div>
+      <div id="6" class="box"></div>
+      <div id="7" class="box"></div>
+      <div id="8" class="box"></div>
     </div>
     <h2 id="result"></h2>
-    <button id="restart">もう一度やる</button>
+    <button id="restartBtn">Restart</button>
   </div>
   <script src="index.js"></script>
 </body>
+
 </html>
