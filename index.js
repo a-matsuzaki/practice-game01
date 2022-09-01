@@ -9,24 +9,30 @@ let options = ["", "", "", "", "", "", "", "", ""];
 // 初期のプレイヤー
 let currentPlayer = "O";
 // ゲームが実行中かどうか
+// ゲームの開始のタイミングでtrueにする
 let running = false;
 
-// スタートボタンを押すとゲームが表示され、スタートボタンが非表示になる
-// startBtn.addEventListener("click", () => {
-//   if (getComputedStyle(container).display == 'none') {
-//     container.style.display = "block";
-//   }
-//   if (getComputedStyle(startBtn).display == 'inline-block') {
-//     startBtn.style.display = "none";
-//   }
-// })
+// スタートボタンを押したときの挙動
+function startGame() {
+  // ゲーム画面を表示
+  if (getComputedStyle(container).display == 'none') {
+    container.style.display = "block";
+  }
+  // スタートボタンを非表示
+  if (getComputedStyle(startBtn).display == 'inline-block') {
+    startBtn.style.display = "none";
+  }
+}
+// リスタートボタンを押したときの挙動
+function restartGame() {
+  // ゲーム画面を非表示
+  if (getComputedStyle(container).display == 'block') {
+    container.style.display = "none";
+  }
+  // スタートボタンを表示
+  if (getComputedStyle(startBtn).display == 'none') {
+    startBtn.style.display = "inline-block";
+  }
+}
 
-// リスタートボタンを押すとゲームが非表示になり、スタートボタンが表示される
-// restartBtn.addEventListener("click", () => {
-//   if (getComputedStyle(container).display == 'block') {
-//     container.style.display = "none";
-//   }
-//   if (getComputedStyle(startBtn).display == 'none') {
-//     startBtn.style.display = "inline-block";
-//   }
-// })
+
