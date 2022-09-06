@@ -26,6 +26,18 @@ let currentPlayer = "O";
 // ゲームが実行中かどうか
 let running = false;
 
+// スタートボタンを押したときの挙動
+startBtn.addEventListener("click", function () {
+  // ゲーム画面を表示
+  if (getComputedStyle(container).display == 'none') {
+    container.style.display = "block";
+  }
+  // スタートボタンを非表示
+  if (getComputedStyle(startBtn).display == 'inline-block') {
+    startBtn.style.display = "none";
+  }
+});
+
 // ゲーム初期化
 initializeGame();
 
@@ -140,15 +152,5 @@ function restartGame() {
     startBtn.style.display = "inline-block";
   }
 }
-// スタートボタンを押したときの挙動
-startBtn.addEventListener("click", function () {
-  // ゲーム画面を表示
-  if (getComputedStyle(container).display == 'none') {
-    container.style.display = "block";
-  }
-  // スタートボタンを非表示
-  if (getComputedStyle(startBtn).display == 'inline-block') {
-    startBtn.style.display = "none";
-  }
-});
+
 
