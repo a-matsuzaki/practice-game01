@@ -4,7 +4,7 @@ const startBtn = document.querySelector("#startBtn");
 const container = document.querySelector("#container");
 // マス目(配列が入る)
 const blockes = document.querySelectorAll(".block");
-// テキスト
+// 可変テキスト
 const text = document.querySelector("#text");
 // リスタートボタン
 const restartBtn = document.querySelector("#restartBtn");
@@ -43,11 +43,11 @@ initializeGame();
 
 // ゲームを初期化する関数
 function initializeGame() {
-  // 全てのマスにクリックされた場合のコールバック関数を設定
+  // 全てのマスにクリックされた場合の挙動を設定
   blockes.forEach(function (block) {
     block.addEventListener("click", blockClicked)
   });
-  // リスタートボタンがクリックされる
+  // リスタートボタンの挙動を設置
   restartBtn.addEventListener("click", restartGame);
   // テキストに初期プレイヤーを表示
   text.textContent = `${currentPlayer}のターン`;
@@ -70,7 +70,7 @@ function blockClicked(e) {
   checkConditions();
 }
 
-// マスの中身を更新
+// マスの中身を更新する関数（O,Xを設定する）
 function updateBlock(block, index) {
   // 配列にcurrentPlayerを代入
   options[index] = currentPlayer;
@@ -78,15 +78,15 @@ function updateBlock(block, index) {
   block.textContent = currentPlayer;
 }
 
-// プレイヤーの交代
+// プレイヤーの交代をする関数
 function changePlayer() {
-  // OだったらXに、OでなければOに変更
+  // OだったらXに、OでなければOにして代入
   currentPlayer = (currentPlayer == "O") ? "X" : "O";
   // テキスト部分の表示
   text.textContent = `${currentPlayer}のターン`;
 }
 
-// 勝利条件を満たしたかどうかチェック
+// 勝利条件を満たしたかどうかチェックする関数
 function checkConditions() {
   // 初期値は勝利条件を満たしていない
   let win = false;
@@ -97,11 +97,11 @@ function checkConditions() {
     const blockB = options[condition[1]];
     const blockC = options[condition[2]];
 
-    //AかBかCが空の場合は続行
+    //AかBかCが空の場合はループ続行
     if (blockA == "" || blockB == "" || blockC == "") {
       continue;
     }
-    //AとBとCの全てが同じプレイヤーの場合は勝利条件を満たしているので終了
+    //AとBとCの全てが同じプレイヤーの場合は勝利条件を満たしているのでループ終了
     if (blockA == blockB && blockB == blockC) {
       win = true;
       break;
@@ -129,7 +129,7 @@ function checkConditions() {
   }
 }
 
-// リスタート
+// リスタートの関数
 function restartGame() {
   // プレイヤーを初期値に設定
   currentPlayer = "O";
@@ -141,7 +141,7 @@ function restartGame() {
   blockes.forEach(function (block) {
     block.textContent = ""
   });
-  // ゲームは実行中に
+  // ゲームは実行中にする
   running = true;
   // ゲーム画面を非表示
   if (getComputedStyle(container).display == 'block') {
