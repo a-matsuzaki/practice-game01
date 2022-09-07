@@ -4,14 +4,9 @@
   box-sizing: border-box;
 }
 
-:root {
-  --orange: #fff;
-  --winning-blocks: #00552e;
-}
-
 body {
   background-color: #204040;
-  color: var(--orange);
+  color: #fff;
   font-family: 'Finger Paint', 'HanziPen SC', cursive;
   text-align: center;
 }
@@ -78,5 +73,6 @@ body {
 
 #startBtn:hover,
 #restartBtn:hover {
-  transform: translateY(-2px);
+  color: #204040;
+  background-color: #fff;
 }
