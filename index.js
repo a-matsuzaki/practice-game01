@@ -26,18 +26,6 @@ let currentPlayer = "O";
 // ゲームが実行中かどうか
 let running = false;
 
-// スタートボタンを押したときの挙動
-startBtn.addEventListener("click", function () {
-  // ゲーム画面を表示
-  if (getComputedStyle(container).display == 'none') {
-    container.style.display = "block";
-  }
-  // スタートボタンを非表示
-  if (getComputedStyle(startBtn).display == 'inline-block') {
-    startBtn.style.display = "none";
-  }
-});
-
 // ゲーム初期化
 initializeGame();
 
@@ -47,6 +35,8 @@ function initializeGame() {
   blockes.forEach(function (block) {
     block.addEventListener("click", blockClicked)
   });
+  // スタートボタンの挙動を設置
+  startBtn.addEventListener("click", startGame);
   // リスタートボタンの挙動を設置
   restartBtn.addEventListener("click", restartGame);
   // テキストに初期プレイヤーを表示
@@ -127,6 +117,18 @@ function checkConditions() {
     // プレイヤーを交代
     changePlayer();
   }
+}
+
+// スタートの関数
+function startGame() {
+  // ゲーム画面を表示
+  if (getComputedStyle(container).display == 'none') {
+    container.style.display = "block";
+  }
+  // スタートボタンを非表示
+  if (getComputedStyle(startBtn).display == 'inline-block') {
+    startBtn.style.display = "none";
+  };
 }
 
 // リスタートの関数
