@@ -1,3 +1,11 @@
+<?php
+session_start();
+require('library.php');
+
+$db = dbconnect();
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -35,5 +43,6 @@
   </div>
   <script src="index.js"></script>
 </body>
+
 
 </html>
