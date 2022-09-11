@@ -6,6 +6,8 @@ const container = document.querySelector("#container");
 const blockes = document.querySelectorAll(".block");
 // プレイヤー
 const player = document.querySelector("#player");
+// 日時
+const datetime = document.querySelector("#datetime");
 // 可変テキスト
 const text = document.querySelector("#text");
 // 結果
@@ -149,6 +151,18 @@ function startGame() {
 
 // リスタートの関数
 function restartGame() {
+  if (!running) {
+    // 日付オブジェクトの作成
+    let d = new Date();
+    let year = d.getFullYear();
+    let month = d.getMonth() + 1;
+    let day = d.getDate();
+    let hour = d.getHours();
+    let minute = d.getMinutes();
+    let second = d.getSeconds();
+    let now = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+    datetime.value = now;
+  }
   // プレイヤーを初期値に設定
   currentPlayer = "O";
   // マスの中身を空にする

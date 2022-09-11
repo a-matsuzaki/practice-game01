@@ -4,13 +4,12 @@ require('library.php');
 
 $db = dbconnect();
 
-$result = '';
-
 if (isset($_POST['result'])) {
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $_POST['result'];
+    $datetime = $_POST['datetime'];
   }
-  var_dump($result);
+  var_dump($result, $datetime);
 }
 
 ?>
@@ -52,6 +51,7 @@ if (isset($_POST['result'])) {
       </h2>
       <form id="form" action="" method="post">
         <input id="result" type="text" name="result">
+        <input id="datetime" type="text" name="datetime">
         <button id="restartBtn" type="submit">Restart</button>
       </form>
     </div>
