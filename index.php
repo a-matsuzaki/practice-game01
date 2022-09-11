@@ -41,6 +41,9 @@ $db = dbconnect();
         <span id="player"></span>
         <span id="text"></span>
       </h2>
+      <form action="" method="post">
+        <input id="result" type="text" name="result">
+      </form>
       <button id="restartBtn">Restart</button>
     </div>
   </div>

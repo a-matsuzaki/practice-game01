@@ -8,6 +8,8 @@ const blockes = document.querySelectorAll(".block");
 const player = document.querySelector("#player");
 // 可変テキスト
 const text = document.querySelector("#text");
+// 結果
+const result = document.querySelector("#result");
 // リスタートボタン
 const restartBtn = document.querySelector("#restartBtn");
 // 勝利条件
@@ -110,6 +112,8 @@ function checkConditions() {
     player.textContent = `${currentPlayer}`;
     // 「勝ち」を表示
     text.textContent = `の勝ち！`;
+    // 結果をフォームに送信
+    result.value = currentPlayer;
     // ゲームを終了
     running = false;
   }
@@ -119,6 +123,8 @@ function checkConditions() {
     player.textContent = ``;
     // 引き分けを表示
     text.textContent = `引き分け`;
+    // 結果をフォームに送信
+    result.value = '引き分け';
     // ゲームを終了
     running = false;
   }
