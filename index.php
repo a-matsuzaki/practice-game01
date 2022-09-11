@@ -4,6 +4,15 @@ require('library.php');
 
 $db = dbconnect();
 
+$result = '';
+
+if (isset($_POST['result'])) {
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $result = $_POST['result'];
+  }
+  var_dump($result);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -41,10 +50,10 @@ $db = dbconnect();
         <span id="player"></span>
         <span id="text"></span>
       </h2>
-      <form action="" method="post" class="form">
+      <form id="form" action="" method="post">
         <input id="result" type="text" name="result">
+        <button id="restartBtn" type="submit">Restart</button>
       </form>
-      <button id="restartBtn">Restart</button>
     </div>
   </div>
   <script src="index.js"></script>
