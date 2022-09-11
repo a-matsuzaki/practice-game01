@@ -4,12 +4,24 @@ require('library.php');
 
 $db = dbconnect();
 
-if (isset($_POST['result'])) {
+$datetime = '';
+$result = '';
+
+if (isset($_POST['datetime']) && isset($_POST['result'])) {
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $result = $_POST['result'];
     $datetime = $_POST['datetime'];
+    $result = $_POST['result'];
+    $stmt = $db->prepare('INSERT INTO result_table (datetime, result) VALUES (?, ?)');
+    if (!$stmt) {
+      die($db->error);
+    }
+
+    $stmt->bind_param('ss', $datetime, $result);
+    $success = $stmt->execute();
+    if (!$success) {
+      die($db->error);
+    }
   }
-  var_dump($result, $datetime);
 }
 
 ?>
@@ -50,8 +62,8 @@ if (isset($_POST['result'])) {
         <span id="text"></span>
       </h2>
       <form id="form" action="" method="post">
-        <input id="result" type="text" name="result">
         <input id="datetime" type="text" name="datetime">
+        <input id="result" type="text" name="result">
         <button id="restartBtn" type="submit">Restart</button>
       </form>
     </div>
