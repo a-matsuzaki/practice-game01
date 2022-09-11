@@ -104,15 +104,11 @@ function checkConditions() {
     text.textContent = `${currentPlayer} の勝ち！`;
     // ゲームを終了
     running = false;
-    // 結果をDBに登録するための変数
-    let result = (currentPlayer == "O") ? "O" : "X";
   }
   // 勝利条件を満たしていない場合で、全てのマスが埋まっている場合
   else if (!options.includes("")) {
     // 引き分けを表示
     text.textContent = `引き分け`;
-    // 結果をDBに登録するための変数
-    let result = '引き分け';
     // ゲームを終了
     running = false;
   }
@@ -137,17 +133,6 @@ function startGame() {
 
 // リスタートの関数
 function restartGame() {
-  if (!running) {
-    // 日付オブジェクトの作成
-    let d = new Date();
-    let year = d.getFullYear();
-    let month = d.getMonth() + 1;
-    let day = d.getDate();
-    let hour = d.getHours();
-    let minute = d.getMinutes();
-    let second = d.getSeconds();
-    let datetime = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
-  }
   // プレイヤーを初期値に設定
   currentPlayer = "O";
   // マスの中身を空にする
