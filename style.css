@@ -51,6 +51,7 @@ body {
   border-bottom: none;
 }
 
+#player,
 #text {
   font-size: 40px;
 }
