@@ -1,5 +1,7 @@
 // スタートボタン
 const startBtn = document.querySelector("#startBtn");
+// スタートボタン
+const resultBox = document.querySelector("#resultBox");
 // コンテンツ全体
 const container = document.querySelector("#container");
 // マス目(配列が入る)
@@ -147,6 +149,10 @@ function startGame() {
   if (getComputedStyle(startBtn).display == 'inline-block') {
     startBtn.style.display = "none";
   };
+  // 履歴を非表示
+  if (getComputedStyle(resultBox).display == 'block') {
+    resultBox.style.display = "none";
+  };
 }
 
 // リスタートの関数
@@ -185,6 +191,10 @@ function restartGame() {
   if (getComputedStyle(startBtn).display == 'none') {
     startBtn.style.display = "inline-block";
   }
+  // 履歴を表示
+  if (getComputedStyle(resultBox).display == 'none') {
+    resultBox.style.display = "block";
+  };
 }
 
 
