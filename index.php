@@ -7,10 +7,6 @@ if (isset($_POST['datetime']) && isset($_POST['result'])) {
   $result = $_POST['result'];
 } else {
   // 勝負がついていないとき（＝datetimeかresultが空のとき）にエラーが出るので、エラーが出ないようにするコードをここに書きたい
-  // 以下のコードではリダイレクトされ続けるっぽいのでダメ
-
-  header('Location: index.php');
-  exit();
 }
 $db = dbconnect();
 
