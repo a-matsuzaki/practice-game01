@@ -25,6 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (!$success) {
     die($db->error);
   }
+
+  header('Location: index.php');
+  exit();
 }
 
 ?>
@@ -56,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <th>結果</th>
           </tr>
           <?php
-          $stmt = $db->prepare('SELECT datetime, result FROM result_table');
+          $stmt = $db->prepare('SELECT datetime, result FROM result_table order by datetime desc');
           if (!$stmt) {
             die($db->error);
           }
