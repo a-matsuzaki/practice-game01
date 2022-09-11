@@ -20,6 +20,20 @@ body {
   font-size: 60px;
 }
 
+#resultBox {
+  width: 660px;
+  margin: 0 auto;
+}
+
+#resultTable {
+  width: 660px;
+}
+
+#resultTable tbody tr {
+  width: 660px;
+  font-size: 30px;
+}
+
 #container {
   display: none;
 }

@@ -2,25 +2,28 @@
 session_start();
 require('library.php');
 
+if (isset($_POST['datetime']) && isset($_POST['result'])) {
+  $datetime = $_POST['datetime'];
+  $result = $_POST['result'];
+} else {
+  // 勝負がついていないとき（＝datetimeかresultが空のとき）にエラーが出るので、エラーが出ないようにするコードをここに書きたい
+  // 以下のコードではリロードされ続けるっぽいのでダメ
+
+  // header('Location: index.php');
+  // exit();
+}
 $db = dbconnect();
 
-$datetime = '';
-$result = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $stmt = $db->prepare('INSERT INTO result_table (datetime, result) VALUES (?, ?)');
+  if (!$stmt) {
+    die($db->error);
+  }
 
-if (isset($_POST['datetime']) && isset($_POST['result'])) {
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $datetime = $_POST['datetime'];
-    $result = $_POST['result'];
-    $stmt = $db->prepare('INSERT INTO result_table (datetime, result) VALUES (?, ?)');
-    if (!$stmt) {
-      die($db->error);
-    }
-
-    $stmt->bind_param('ss', $datetime, $result);
-    $success = $stmt->execute();
-    if (!$success) {
-      die($db->error);
-    }
+  $stmt->bind_param('ss', $datetime, $result);
+  $success = $stmt->execute();
+  if (!$success) {
+    die($db->error);
   }
 }
 
@@ -45,6 +48,34 @@ if (isset($_POST['datetime']) && isset($_POST['result'])) {
     <p class="text">3つ並べたら勝ち</p>
     <h1 class="title">OX Game</h1>
     <button id="startBtn">Start</button>
+    <div id="resultBox">
+      <table id="resultTable">
+        <tbody>
+          <tr>
+            <th>日時</th>
+            <th>結果</th>
+          </tr>
+          <?php
+          $stmt = $db->prepare('SELECT datetime, result FROM result_table');
+          if (!$stmt) {
+            die($db->error);
+          }
+          $success = $stmt->execute();
+          if (!$success) {
+            die($db->error);
+          }
+
+          $stmt->bind_result($datetime, $result);
+          while ($stmt->fetch()) :
+          ?>
+            <tr>
+              <td><?php echo $datetime ?></td>
+              <td><?php echo $result ?></td>
+            </tr>
+          <?php endwhile; ?>
+        </tbody>
+      </table>
+    </div>
     <div id="container">
       <div id="board">
         <div id="0" class="block"></div>
