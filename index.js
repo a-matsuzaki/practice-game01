@@ -133,6 +133,17 @@ function startGame() {
 
 // リスタートの関数
 function restartGame() {
+  if (!running) {
+    // 日付オブジェクトの作成
+    let d = new Date();
+    let year = d.getFullYear();
+    let month = d.getMonth() + 1;
+    let day = d.getDate();
+    let hour = d.getHours();
+    let minute = d.getMinutes();
+    let second = d.getSeconds();
+    console.log(year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second);
+  }
   // プレイヤーを初期値に設定
   currentPlayer = "O";
   // マスの中身を空にする
