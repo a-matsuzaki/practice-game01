@@ -37,7 +37,10 @@ $db = dbconnect();
         <div id="7" class="block"></div>
         <div id="8" class="block"></div>
       </div>
-      <h2 id="text"></h2>
+      <h2>
+        <span id="player"></span>
+        <span id="text"></span>
+      </h2>
       <button id="restartBtn">Restart</button>
     </div>
   </div>

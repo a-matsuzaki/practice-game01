@@ -4,6 +4,8 @@ const startBtn = document.querySelector("#startBtn");
 const container = document.querySelector("#container");
 // マス目(配列が入る)
 const blockes = document.querySelectorAll(".block");
+// プレイヤー
+const player = document.querySelector("#player");
 // 可変テキスト
 const text = document.querySelector("#text");
 // リスタートボタン
@@ -40,7 +42,9 @@ function initializeGame() {
   // リスタートボタンの挙動を設置
   restartBtn.addEventListener("click", restartGame);
   // テキストに初期プレイヤーを表示
-  text.textContent = `${currentPlayer}のターン`;
+  player.textContent = `${currentPlayer}`;
+  // テキストを表示
+  text.textContent = `のターン`;
   // ゲームを実行中に変更
   running = true;
 }
@@ -72,8 +76,10 @@ function updateBlock(block, index) {
 function changePlayer() {
   // OだったらXに、OでなければOにして代入
   currentPlayer = (currentPlayer == "O") ? "X" : "O";
+  // プレイヤーを表示
+  player.textContent = `${currentPlayer}`;
   // テキスト部分の表示
-  text.textContent = `${currentPlayer}のターン`;
+  text.textContent = `のターン`;
 }
 
 // 勝利条件を満たしたかどうかチェックする関数
@@ -101,12 +107,16 @@ function checkConditions() {
   // 勝利条件を満たしている場合
   if (win) {
     // 勝者を表示
-    text.textContent = `${currentPlayer} の勝ち！`;
+    player.textContent = `${currentPlayer}`;
+    // 「勝ち」を表示
+    text.textContent = `の勝ち！`;
     // ゲームを終了
     running = false;
   }
   // 勝利条件を満たしていない場合で、全てのマスが埋まっている場合
   else if (!options.includes("")) {
+    // 引き分けなのでプレイヤーは空
+    player.textContent = ``;
     // 引き分けを表示
     text.textContent = `引き分け`;
     // ゲームを終了
@@ -138,7 +148,9 @@ function restartGame() {
   // マスの中身を空にする
   options = ["", "", "", "", "", "", "", "", ""];
   // テキストに初期プレイヤーを表示
-  text.textContent = `${currentPlayer}のターン`;
+  player.textContent = `${currentPlayer}`;
+  // テキストに初期プレイヤーを表示
+  text.textContent = `のターン`;
   // マスの表示を空にする
   blockes.forEach(function (block) {
     block.textContent = ""
