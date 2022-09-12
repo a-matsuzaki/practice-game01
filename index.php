@@ -5,23 +5,13 @@ require('library.php');
 if (isset($_POST['datetime']) && isset($_POST['result'])) {
   $datetime = $_POST['datetime'];
   $result = $_POST['result'];
-} else {
-  // 勝負がついていないとき（＝datetimeかresultが空のとき）にエラーが出るので、エラーが出ないようにするコードをここに書きたい
 }
 $db = dbconnect();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $stmt = $db->prepare('INSERT INTO result_table (datetime, result) VALUES (?, ?)');
-  if (!$stmt) {
-    die($db->error);
-  }
-
   $stmt->bind_param('ss', $datetime, $result);
   $success = $stmt->execute();
-  if (!$success) {
-    die($db->error);
-  }
-
   header('Location: index.php');
   exit();
 }
