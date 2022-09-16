@@ -3,17 +3,17 @@ session_start();
 require('library.php');
 
 if (isset($_POST['datetime']) && isset($_POST['result'])) {
-  $datetime = $_POST['datetime'];
-  $result = $_POST['result'];
+    $datetime = $_POST['datetime'];
+    $result = $_POST['result'];
 }
 $db = dbconnect();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $stmt = $db->prepare('INSERT INTO result_table (datetime, result) VALUES (?, ?)');
-  $stmt->bind_param('ss', $datetime, $result);
-  $success = $stmt->execute();
-  header('Location: index.php');
-  exit();
+    $stmt = $db->prepare('INSERT INTO result_table (datetime, result) VALUES (?, ?)');
+    $stmt->bind_param('ss', $datetime, $result);
+    $success = $stmt->execute();
+    header('Location: index.php');
+    exit();
 }
 
 ?>
@@ -44,24 +44,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <th>日時</th>
             <th>結果</th>
           </tr>
-          <?php
-          $stmt = $db->prepare('SELECT datetime, result FROM result_table order by datetime desc');
-          if (!$stmt) {
-            die($db->error);
-          }
-          $success = $stmt->execute();
-          if (!$success) {
-            die($db->error);
-          }
+            <?php
+            $stmt = $db->prepare('SELECT datetime, result FROM result_table order by datetime desc');
+            if (!$stmt) {
+                die($db->error);
+            }
+            $success = $stmt->execute();
+            if (!$success) {
+                die($db->error);
+            }
 
-          $stmt->bind_result($datetime, $result);
-          while ($stmt->fetch()) :
-          ?>
+            $stmt->bind_result($datetime, $result);
+            while ($stmt->fetch()) :
+                ?>
             <tr>
               <td><?php echo $datetime ?></td>
               <td><?php echo $result ?></td>
             </tr>
-          <?php endwhile; ?>
+            <?php endwhile; ?>
         </tbody>
       </table>
     </div>
