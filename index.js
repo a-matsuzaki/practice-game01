@@ -81,7 +81,7 @@ function updateBlock(block, index) {
 // プレイヤーの交代をする関数
 function changePlayer() {
   // OだったらXに、OでなければOにして代入
-  currentPlayer = (currentPlayer == "O") ? "X" : "O";
+  currentPlayer = (currentPlayer === "O") ? "X" : "O";
   // プレイヤーを表示
   player.textContent = `${currentPlayer}`;
   // テキスト部分の表示
@@ -100,11 +100,11 @@ function checkConditions() {
     const blockC = options[condition[2]];
 
     //AかBかCが空の場合はループ続行
-    if (blockA == "" || blockB == "" || blockC == "") {
+    if (blockA === "" || blockB === "" || blockC === "") {
       continue;
     }
     //AとBとCの全てが同じプレイヤーの場合は勝利条件を満たしているのでループ終了
-    if (blockA == blockB && blockB == blockC) {
+    if (blockA === blockB && blockB === blockC) {
       win = true;
       break;
     }
@@ -142,15 +142,15 @@ function checkConditions() {
 // スタートの関数
 function startGame() {
   // ゲーム画面を表示
-  if (getComputedStyle(container).display == 'none') {
+  if (getComputedStyle(container).display === 'none') {
     container.style.display = "block";
   }
   // スタートボタンを非表示
-  if (getComputedStyle(startBtn).display == 'inline-block') {
+  if (getComputedStyle(startBtn).display === 'inline-block') {
     startBtn.style.display = "none";
   };
   // 履歴を非表示
-  if (getComputedStyle(resultBox).display == 'block') {
+  if (getComputedStyle(resultBox).display === 'block') {
     resultBox.style.display = "none";
   };
 }
@@ -184,15 +184,15 @@ function restartGame() {
   // ゲームは実行中にする
   running = true;
   // ゲーム画面を非表示
-  if (getComputedStyle(container).display == 'block') {
+  if (getComputedStyle(container).display === 'block') {
     container.style.display = "none";
   }
   // スタートボタンを表示
-  if (getComputedStyle(startBtn).display == 'none') {
+  if (getComputedStyle(startBtn).display === 'none') {
     startBtn.style.display = "inline-block";
   }
   // 履歴を表示
-  if (getComputedStyle(resultBox).display == 'none') {
+  if (getComputedStyle(resultBox).display === 'none') {
     resultBox.style.display = "block";
   };
 }
