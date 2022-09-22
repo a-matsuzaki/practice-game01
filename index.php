@@ -64,12 +64,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <span id="player"></span>
         <span id="text"></span>
       </h2>
-      <form id="form" action="" method="post">
-        <input id="datetime" type="text" name="datetime">
-        <input id="result" type="text" name="result">
-        <button id="restartBtn" type="submit">Restart</button>
-      </form>
     </div>
+    <form id="form" action="" method="post">
+      <input id="datetime" type="text" name="datetime">
+      <input id="result" type="text" name="result">
+      <button id="restartBtn" type="submit">Restart</button>
+    </form>
   </div>
   <script src="index.js"></script>
 </body>

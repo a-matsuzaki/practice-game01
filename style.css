@@ -106,3 +106,7 @@ body {
   color: #204040;
   background-color: #fff;
 }
+
+#restartBtn{
+  display: none;
+}

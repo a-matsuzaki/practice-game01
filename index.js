@@ -120,6 +120,10 @@ function checkConditions() {
     result.value = currentPlayer;
     // ゲームを終了
     running = false;
+    // リスタートボタンを表示
+    if (getComputedStyle(restartBtn).display === 'none') {
+      restartBtn.style.display = "inline-block";
+    };
   }
   // 勝利条件を満たしていない場合で、全てのマスが埋まっている場合
   else if (!options.includes("")) {
@@ -131,6 +135,10 @@ function checkConditions() {
     result.value = '引き分け';
     // ゲームを終了
     running = false;
+    // リスタートボタンを表示
+    if (getComputedStyle(restartBtn).display === 'none') {
+      restartBtn.style.display = "inline-block";
+    };
   }
   // それ以外の場合
   else {
@@ -195,6 +203,10 @@ function restartGame() {
   if (getComputedStyle(resultBox).display === 'none') {
     resultBox.style.display = "block";
   };
+  // ゲーム画面を非表示
+  if (getComputedStyle(restartBtn).display === 'inline-block') {
+    restartBtn.style.display = "none";
+  }
 }
 
 
